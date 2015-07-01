@@ -7,7 +7,7 @@
 		<script type="text/javascript" data-main="js/main.js" src="js/lib/require.js" ></script>
 	</head>
 	<body data-ng-controller="IndexController" >
-		<header data-ng-controller="BarController" class="top-bar" >
+		<header class="top-bar" >
 		  <div class="content-inner">
         <div class="address">
           <figure class="address-legend">联系方式</figure>
@@ -33,6 +33,25 @@
 		    </div>
 		  </div>
 		</section>
-		
+		<section class="content-model what-ICan" >
+		  <div class="content-inner clearfix" >
+        <h2 class="model-title" >
+          <span class="large">我会什么?</span>
+          <span class="mini">What&nbsp;&nbsp;I&nbsp;&nbsp;would</span>
+        </h2>
+        <ul class="my-tec-text">
+          <li data-ng-repeat="item in myTec.textList" >
+            <span class="text-question" data-ng-bind="item.question" ></span>
+            <span class="text-answer" data-ng-bind="item.answer" ></span>
+          </li>
+        </ul>
+		    <ul class="my-tec-list clearfix" >
+		      <li data-ng-repeat="item in myTec.list" >
+		        <img alt="{{item.label}}" title="{{item.label}}" data-ng-src="{{myTec.imgSrc}}{{item.img}}" />
+		      </li>
+		    </ul>
+		  </div>
+		</section>
+	
 	</body>
 </html>

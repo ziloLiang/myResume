@@ -168,6 +168,25 @@ body {
     }
 }
 
+.content-model{
+    background-color: #fff;
+    padding: 70px 10px;
+    @fontSize: 34px;
+    .model-title{
+        margin-bottom: 30px;
+        .large{
+            color: #343434;
+            font-size: @fontSize;
+            font-family: "黑体","microsoft yahei";
+        }
+        .mini{
+            color: #bbb;
+            font-size: @fontSize - 15px;
+            margin-left: 40px;
+        }
+    }
+}
+
 .model-black{
     background-color: @color1;
 }
@@ -192,6 +211,10 @@ body {
 }
 
 .top-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 38px;
     line-height: 39px;
     background-color: @color2;
@@ -199,6 +222,7 @@ body {
     color: #f0f0f0;
     color: rgba(255,255,255,0.8);
     overflow: hidden;
+    z-index: 9999;
 }
 .address{
     float: left;
@@ -243,7 +267,7 @@ body {
 //基本信息-----start
 .basic-info{
     color: #fff;
-    padding: 70px 10px;
+    padding-top: 70px + 39px;
     min-height: 300px;
     .info-header{
         position: absolute;
@@ -285,3 +309,37 @@ body {
     }
 }
 //基本信息-----end
+
+//我会什么-----start
+
+.what-ICan{
+    .my-tec-text{
+        margin-bottom: 20px;
+        li{
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding-left: 1%;
+            color: #343434;
+            .text-question{
+                margin-right: 20px;
+            }
+            .text-answer{
+                color: #999;
+            }
+        }
+    }
+    .my-tec-list{
+        li{
+            float: left;
+            width: 25%;
+            text-align: center;
+            margin-bottom: 20px;
+            img{
+                width: 90%;
+                border: 1px solid #e5e5e5;
+            }
+        }
+    }
+}
+
+//我会什么-----end

@@ -155,6 +155,23 @@ body {
 .clearfix:after {
   clear: both;
 }
+.content-model {
+  background-color: #fff;
+  padding: 70px 10px;
+}
+.content-model .model-title {
+  margin-bottom: 30px;
+}
+.content-model .model-title .large {
+  color: #343434;
+  font-size: 34px;
+  font-family: "黑体", "microsoft yahei";
+}
+.content-model .model-title .mini {
+  color: #bbb;
+  font-size: 19px;
+  margin-left: 40px;
+}
 .model-black {
   background-color: #2a303c;
 }
@@ -178,6 +195,10 @@ body {
   clear: both;
 }
 .top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 38px;
   line-height: 39px;
   background-color: #cb3837;
@@ -185,6 +206,7 @@ body {
   color: #f0f0f0;
   color: rgba(255, 255, 255, 0.8);
   overflow: hidden;
+  z-index: 9999;
 }
 .address {
   float: left;
@@ -234,7 +256,7 @@ body {
 }
 .basic-info {
   color: #fff;
-  padding: 70px 10px;
+  padding-top: 109px;
   min-height: 300px;
 }
 .basic-info .info-header {
@@ -272,4 +294,29 @@ body {
 }
 .basic-info .basic-box.strong .basic-content {
   color: #f1c40f;
+}
+.what-ICan .my-tec-text {
+  margin-bottom: 20px;
+}
+.what-ICan .my-tec-text li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-left: 1%;
+  color: #343434;
+}
+.what-ICan .my-tec-text li .text-question {
+  margin-right: 20px;
+}
+.what-ICan .my-tec-text li .text-answer {
+  color: #999;
+}
+.what-ICan .my-tec-list li {
+  float: left;
+  width: 25%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.what-ICan .my-tec-list li img {
+  width: 90%;
+  border: 1px solid #e5e5e5;
 }
