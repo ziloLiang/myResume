@@ -68,6 +68,6 @@ define(["angular","angular-route"],function(angular){
   angular.bootstrap(document,["myApp"]);
   
   console.log("/**");
-  console.log("*代码往往能看出一个人的良好编程习惯");
+  console.log("*如果需要源码的话，请发email给我:-D");
   console.log("*/");
 })
