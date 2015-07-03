@@ -4,7 +4,9 @@
 		<meta charset="utf-8" />
 		<title>I'm here, waiting for your choice</title>
 		<link rel="stylesheet" href="css/basic.css" />
-		<script src="js/echarts/echarts.js"></script>
+		
+    <script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"  ></script>
+    <script src="js/echarts/echarts.js"></script>
     <script type="text/javascript">
       require.config({
         paths: {
@@ -72,7 +74,6 @@
       );
     </script>
   
-		<script type="text/javascript" data-main="js/main.js" src="js/lib/require.js" ></script>
 	</head>
 	<body data-ng-controller="IndexController" >
 		<header class="top-bar" >

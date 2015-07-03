@@ -1,9 +1,9 @@
 require.config({
-  baseUrl: "js/",
+  baseUrl: "",
   paths: {
-    "angular": "lib/angular",
-    "angular-route": "lib/angular-route",
-    "app": "app"
+    "angular": "js/lib/angular",
+    "angular-route": "js/lib/angular-route",
+    "app": "js/app"
   },
   
   shim: {
