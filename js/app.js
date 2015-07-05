@@ -9,8 +9,8 @@ define(["angular","angular-route"],function(angular){
       modelList: [
         {"label": "基本信息"},
         {"label": "我会什么"},
-        {"label": "项目经历"},
         {"label": "我的书架"},
+        {"label": "项目经历"},
         {"label": "我的组件"},
       ]
     }
@@ -37,7 +37,8 @@ define(["angular","angular-route"],function(angular){
       {"label": "工作年限", "content": "2年"},
       {"class": "strong", "label": "求职意向", "content": "Web前端工程师"},
       {"class": "col2", "label": "GitHub", "content": "https://github.com/ziloLiang"},
-      {"class": "col2", "label": "兴趣爱好", "content": "足球　羽毛球　dota2　炉石传说　动漫"}
+      {"class": "col2", "label": "兴趣爱好", "content": "足球　羽毛球　dota2　炉石传说　动漫"},
+      {"class": "col4", "label": "自我评价", "content": "这是自我评鉴，这是自我评鉴，这是自我评鉴，这是自我评鉴这是自我评鉴，这是自我评鉴"}
     ]
   
     //我的技术图片列表
@@ -59,38 +60,6 @@ define(["angular","angular-route"],function(angular){
         {"label": "gruntjs", "img":"gruntjs.png"},
         {"label": "angualrJs", "img":"angualrJs.png"}                                                        
       ]
-    }
-    
-    //我的经历
-    $scope.project = {
-    	imgSrc: "",
-    	index: 0,
-    	projectList: [
-    	 {"title": "Gurucv人物志","UrlName": "www.gurucv.com","UrlLink": "http://www.gurucv.com",
-    	 "intr": "Gurucv人物志是一个全新的职业社交网站，不仅具备社交网站的所有职能，"+
-    	  "而他最为新颖的就是云详历。通过将各方面人才的详历挂在到云端",
-    	  "myDuty": "前端工程师"},
-    	 {"title": "Gurucv人物志-移动端","UrlName": "m.gurucv.com","UrlLink": "http://m.gurucv.com",
-    	  "intr": "天才相离移动端", 
-    	  "myDuty": "前端工程师"}
-    	],
-    	show: function(index){
-    		$scope.project.index = index;
-    	}
-    }
-    
-    //我的书架
-    $scope.bookshelf = {
-    	imgSrc: "img/book/",
-    	bookList: [
-    		{"img": "book_jquery.jpg"},
-    		{"img": "book_javascript.jpg"},
-    		{"img": "book_flower.jpg"},
-    		{"img": "book_html5.jpg"},
-    		{"img": "book_html5response.jpg"},
-    		{"img": "book_angualrAnimal.jpg"},
-    		{"img": "book_ngbook.jpg"}
-    	]
     }
     
   }]);

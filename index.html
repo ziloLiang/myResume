@@ -19,7 +19,7 @@
           'echarts/chart/radar'
         ],
         function(ec) {
-          var myChart = ec.init(document.getElementById('radar'));
+          var myChart = ec.init(document.getElementById('main'));
           var option = {
             color: ["rgba(255,255,255,0.7)", "rgba(255,255,255,0.7)"],
             textStyle: {
@@ -28,25 +28,25 @@
             calculable: false,
             polar: [{
               indicator: [{
-                text: '责任心',
+                text: '进攻',
                 max: 100
               }, {
-                text: '协作',
+                text: '防守',
                 max: 100
               }, {
-                text: '成长',
+                text: '体能',
                 max: 100
               }, {
-                text: '用户体验',
+                text: '速度',
                 max: 100
               }, {
-                text: 'Debug',
+                text: '力量',
                 max: 100
               }, {
-                text: '创新',
+                text: '技巧',
                 max: 100
               }],
-              radius: 50,
+              radius: 80,
               name: {
                 textStyle: {
                   color: "#fff"
@@ -64,7 +64,7 @@
                 }
               },
               data: [{
-                value: [80,90,85,80,90,80],
+                value: [97, 32, 74, 95, 88, 92],
                 name: '罗纳尔多'
               }]
             }]
@@ -91,36 +91,30 @@
         </nav>
 		  </div>
 		</header>
-		<!--基本信息---start-->
 		<section class="content-model model-black basic-info">
+		  <div id="main" style="height: 400px;"></div>
 		  <div class="content-inner clearfix">
 		    <img src="img/header-exmple.png" class="info-header" />
 		    <div class="basic-list clearfix">
-		    	
-	    	  <div id="radar"></div>
 		      <div class="basic-box {{item.class}}" data-ng-repeat="item in basic" >
 		        <span class="basic-label" data-ng-bind="item.label" ></span>:
 		        <span class="basic-content" data-ng-bind="item.content" ></span>
 		      </div>
-		      <div class="basic-radar-intr clearfix">
-		      </div>
 		    </div>
 		  </div>
 		</section>
-		<!--基本信息---end-->
-		<!--我会什么---start-->
 		<section class="content-model what-ICan" >
 		  <div class="content-inner clearfix" >
-	        <h2 class="model-title" >
-	          <span class="large">我会什么?</span>
-	          <span class="mini">What&nbsp;&nbsp;I&nbsp;&nbsp;would</span>
-	        </h2>
-	        <ul class="my-tec-text">
-	          <li data-ng-repeat="item in myTec.textList" >
-	            <span class="text-question" data-ng-bind="item.question" ></span>
-	            <span class="text-answer" data-ng-bind="item.answer" ></span>
-	          </li>
-	        </ul>
+        <h2 class="model-title" >
+          <span class="large">我会什么?</span>
+          <span class="mini">What&nbsp;&nbsp;I&nbsp;&nbsp;would</span>
+        </h2>
+        <ul class="my-tec-text">
+          <li data-ng-repeat="item in myTec.textList" >
+            <span class="text-question" data-ng-bind="item.question" ></span>
+            <span class="text-answer" data-ng-bind="item.answer" ></span>
+          </li>
+        </ul>
 		    <ul class="my-tec-list clearfix" >
 		      <li data-ng-repeat="item in myTec.list" >
 		        <img alt="{{item.label}}" title="{{item.label}}" data-ng-src="{{myTec.imgSrc}}{{item.img}}" />
@@ -128,39 +122,6 @@
 		    </ul>
 		  </div>
 		</section>
-		<!--我会什么---end-->
-		<!--项目经验---start-->
-		<section class="content-model model-black project" >
-			<div class="content-inner clearfix" >
-				<h2 class="model-title" >
-		          <span class="large">我做过什么？</span>
-		          <span class="mini">What&nbsp;&nbsp;did&nbsp;&nbsp;I&nbsp;&nbsp;do</span>
-		        </h2>
-				<div class="project-info">
-					<div class="project-box" data-ng-click="project.show($index)" data-ng-class="{current: project.index===$index }" data-ng-repeat="item in project.projectList" >
-						<div class="project-title" data-ng-bind="item.title" ></div>
-						<p class="project-p">项目地址: <a target="_blank" ng-href="{{item.UrlLink}}" >{{item.UrlName}}</a></p>
-						<p class="project-p">项目简介: {{item.intr}}</p>
-						<p class="project-p">项目职责: {{item.myDuty}}</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--我的书架---end-->
-		<!--我的书架---start-->
-		<section class="content-model bookshelf" >
-			<div class="content-inner clearfix" >
-				<h2 class="model-title" >
-		          <span class="large">我的读书历程</span>
-		          <span class="mini">My&nbsp;&nbsp;reading&nbsp;&nbsp;course</span>
-		        </h2>
-				<ul class="book-list">
-					<li data-ng-repeat="book in bookshelf.bookList" >
-						<img alt="{{book.label}}" title="{{book.label}}" ng-src="{{bookshelf.imgSrc}}{{book.img}}" />
-					</li>
-				</ul>
-			</div>
-		</section>
-		<!--我的书架---end-->
+	
 	</body>
 </html>
