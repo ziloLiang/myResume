@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="css/basic.css" />
+		<script data-main="js/main" src="js/lib/require.js"></script>
+	</head>
+	<body data-ng-controller="IndexController" >
+	  <section class="content-model model-black project" >
+      <div class="content-inner clearfix" >
+        <h2 class="model-title" >
+              <!--<span class="large">我做过什么？</span>
+              <span class="mini">What&nbsp;&nbsp;did&nbsp;&nbsp;I&nbsp;&nbsp;do</span>-->
+            </h2>
+        <div class="project-info">
+          <div class="project-box" data-ng-click="project.show($index)" data-ng-class="{current: project.index===$index }" data-ng-repeat="item in project.projectList" >
+            <div class="project-title" data-ng-bind="item.title" ></div>
+            <p class="project-p">项目地址: <a target="_blank" data-ng-href="{{item.UrlLink}}" >{{item.UrlName}}</a></p>
+            <p class="project-p">项目简介: {{item.intr}}</p>
+            <p class="project-p">项目职责: {{item.myDuty}}</p>
+          </div>
+        </div>
+        <div class="project-slide">
+          <div class="slide-box {{item.imgType}}" ng-show="project.index===$index" data-ng-repeat="item in project.projectList" slide-model >
+            <ul class="slide-wapper">
+              <li data-ng-repeat="image in item.imgList"><img data-ng-src="{{project.imgSrc}}{{image.img}}" ng-repeat-finish /></li>
+            </ul>
+            <ul class="slide-intr">
+              <li data-ng-repeat="image in item.imgList" data-ng-bind="image.label"></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+	</body>
+</html>

@@ -364,31 +364,37 @@ body {
 
 //我会什么-----end
 .project{
+    position: relative;
     color: #becddf;
     min-height: 500px;
     .project-info{
-        float: left;
-        width: 40%;
-        .project-title{
-            font-size: 18px;
-        }
-        .project-p{
-            color: #becddf;
-            font-family: "黑体";
-            a{
-                &:hover{
-                    text-decoration: underline;
-                }
+        margin-right: 800px;
+        .project-text{
+          .project-title{
+                font-size: 18px;
             }
+            .project-p{
+                color: #becddf;
+                font-family: "黑体";
+                a{
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }  
         }
         .project-box{
             position: relative;
+            padding: 10px;
             left: 0;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             cursor: pointer;
+            z-index: 101;
             .transition(all .3s ease);
+            .border-radius(3px);
             &.current{
-                left: 20px;
+                left: 10px;
+                .box-shadow(0,0,10px,rgba(255,255,255,.5));
                 .project-title{
                     color: @colorStrong;
                 }
@@ -398,9 +404,47 @@ body {
             }
         }
     }
-    .project-slide{
-        float: right;
-        width: 60%;
+}
+.project-slide{
+    position: absolute;
+    right: 0;
+    top: 70px;
+    width: 800px;
+    height: 100%;
+    .slide-box{
+        position: absolute;
+        width: 800px;
+        left: 50%;
+        top: 50%;
+        margin-left: -400px;
+        .slide-wapper{
+            position: relative;
+            li{
+                position: absolute;
+                cursor: pointer;
+                overflow: hidden;
+            }
+        }
+        .slide-intr{
+            
+        }
+        &.cross{
+            height: 400px;
+            margin-top: -200px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            .slide-wapper{
+                height: 200px;
+                li{
+                    width: 600px;
+                    height: 300px;
+                    left: 100px;
+                    top: 0;
+                }
+            }
+        }
     }
 }
 

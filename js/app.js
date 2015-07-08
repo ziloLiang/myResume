@@ -1,4 +1,4 @@
-define(["angular","angular-route"],function(angular){
+define(["angular", "jquery","angular-route"],function(angular,$){
   
   var app = angular.module("myApp",["ngRoute"]);
   
@@ -63,16 +63,30 @@ define(["angular","angular-route"],function(angular){
     
     //我的经历
     $scope.project = {
-    	imgSrc: "",
+    	imgSrc: "img/project/",
     	index: 0,
     	projectList: [
     	 {"title": "Gurucv人物志","UrlName": "www.gurucv.com","UrlLink": "http://www.gurucv.com",
     	 "intr": "Gurucv人物志是一个全新的职业社交网站，不仅具备社交网站的所有职能，"+
     	  "而他最为新颖的就是云详历。通过将各方面人才的详历挂在到云端",
-    	  "myDuty": "前端工程师"},
+    	  "myDuty": "前端工程师",
+    	  "imgType": "cross",
+    	  "imgList": [
+    	   {"label": "首页","img": "com_1.png"},
+    	   {"label": "职业圈功能","img": "com_2.png"},
+    	   {"label": "私信功能","img": "com_3.png"}
+    	  ]
+    	 },
     	 {"title": "Gurucv人物志-移动端","UrlName": "m.gurucv.com","UrlLink": "http://m.gurucv.com",
     	  "intr": "天才相离移动端", 
-    	  "myDuty": "前端工程师"}
+    	  "myDuty": "前端工程师",
+    	  "imgType": "vertical",
+    	  "imgList": [
+         {"label": "个人设置","img": "m_1.png"},
+         {"label": "名录","img": "m_2.png"},
+         {"label": "互动","img": "m_3.png"}
+        ]
+    	 }
     	],
     	show: function(index){
     		$scope.project.index = index;
@@ -93,8 +107,75 @@ define(["angular","angular-route"],function(angular){
     	]
     }
     
+    $scope.ale= function(){
+      alert(111);
+    }
   }]);
   
+  app.directive("slideModel",function(){
+    return{
+      scope: true,
+      link: function(scope, ele, attrs){
+        scope.$on("ngRepeatFinished",function(){
+          var slideLi = $(ele).find(".slide-wapper li"),
+              mask= "<div class='mask' style='display:none;position:absolute;top:0; right:0; left:0; bottom:0; background-color:#000; opacity:0.5;' ></div>"
+              slideIntr = $(ele).find(".slideIntr li"),
+              index = 0,maxIndex = slideLi.length -1;
+          var posOld = {
+                x: parseInt(slideLi.css("left")),
+                y: parseInt(slideLi.css("top")),
+                w: slideLi.width(),
+                h: slideLi.height()
+              },
+              min = {
+                w: posOld.w * 0.8,
+                h: posOld.h * 0.8,
+                left: posOld.x - 100,
+                right: posOld.x + 100 + posOld.w * 0.2,
+                top: posOld.h * 0.1 
+              }
+          slideLi.bind("click",function(e){
+            var oldIndex = index;
+            index = $(this).index();
+            if(oldIndex < index){
+              slide("left");
+            }else{
+              slide("right");
+            }
+          });
+          slide("init");
+          
+          function slide(dir){
+            var now = slideLi.eq(index),
+                prev = index===0? slideLi.eq(maxIndex) : now.prev(),
+                next = index===maxIndex? slideLi.eq(0) : now.next();
+            if(dir === "init"){
+              slideLi.append(mask);
+              now.css({"left": posOld.x,"top": posOld.y,"width": posOld.w, "height": posOld.h, "zIndex": 100});
+              prev.css({"left": min.left,"top": min.top,"width": min.w, "height": min.h, "zIndex": 10}).find(".mask").show();
+              next.css({"left": min.right,"top": min.top,"width": min.w, "height": min.h, "zIndex": 10}).find(".mask").show();
+              return false;
+            }
+            now.css({"zIndex": 100}).animate({"left": posOld.x,"top": posOld.y,"width": posOld.w, "height": posOld.h},400).find(".mask").hide();
+            prev.css({"zIndex": 10}).animate({"left": min.left,"top": min.top,"width": min.w, "height": min.h},400).find(".mask").show();
+            next.css({"zIndex": 10}).animate({"left": min.right,"top": min.top,"width": min.w, "height": min.h},400).find(".mask").show();
+          }
+        });
+        
+      }
+    }
+    
+  }).directive("ngRepeatFinish",["$timeout",function($timeout){
+    return {
+      link: function(scope){
+        if(scope.$last){
+          $timeout(function(){
+            scope.$emit("ngRepeatFinished");
+          });
+        }
+      }
+    }
+  }])
 
   angular.bootstrap(document,["myApp"]);
   

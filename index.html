@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>I'm here, waiting for your choice</title>
-		<link rel="stylesheet" href="css/basic.css" />
+		<link rel="stylesheet" href="./css/basic.css" />
 		
     <script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"  ></script>
     <script src="js/echarts/echarts.js"></script>
@@ -139,11 +139,21 @@
 				<div class="project-info">
 					<div class="project-box" data-ng-click="project.show($index)" data-ng-class="{current: project.index===$index }" data-ng-repeat="item in project.projectList" >
 						<div class="project-title" data-ng-bind="item.title" ></div>
-						<p class="project-p">项目地址: <a target="_blank" ng-href="{{item.UrlLink}}" >{{item.UrlName}}</a></p>
+						<p class="project-p">项目地址: <a target="_blank" data-ng-href="{{item.UrlLink}}" >{{item.UrlName}}</a></p>
 						<p class="project-p">项目简介: {{item.intr}}</p>
 						<p class="project-p">项目职责: {{item.myDuty}}</p>
 					</div>
 				</div>
+				<div class="project-slide">
+          <div class="slide-box {{item.imgType}}" ng-show="project.index===$index" data-ng-repeat="item in project.projectList" slide-model >
+            <ul class="slide-wapper">
+              <li data-ng-repeat="image in item.imgList"><img data-ng-src="{{project.imgSrc}}{{image.img}}" ng-repeat-finish /></li>
+            </ul>
+            <ul class="slide-intr">
+              <li data-ng-repeat="image in item.imgList" data-ng-bind="image.label"></li>
+            </ul>
+          </div>
+        </div>
 			</div>
 		</section>
 		<!--我的书架---end-->
