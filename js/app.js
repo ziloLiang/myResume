@@ -32,6 +32,7 @@ define(["angular", "jquery","angular-route"],function(angular,$){
       {"class": "strong", "label": "现居地", "content": "北京"},
       {"label": "出生日期", "content": "1989-12-28"},
       {"label": "学校", "content": "天津科技大学"},
+      {"label": "学历", "content": "大学本科"},
       {"label": "专业", "content": "软件工程"},
       {"label": "英语", "content": "CET4 (551)"},
       {"label": "工作年限", "content": "2年"},
@@ -118,8 +119,8 @@ define(["angular", "jquery","angular-route"],function(angular,$){
       link: function(scope, ele, attrs){
         scope.$on("ngRepeatFinished",function(){
           var slideLi = $(ele).find(".slide-wapper li"),
-              mask= "<div class='mask' style='display:none;position:absolute;top:0; right:0; left:0; bottom:0; background-color:#000; opacity:0.5;' ></div>"
-              slideIntr = $(ele).find(".slideIntr li"),
+              mask= "<div class='mask' style='display:none;position:absolute;top:0; right:0; left:0; bottom:0; background-color:#000; opacity:0.5;' ></div>",
+              slideIntr = $(ele).find(".slide-intr li"),
               index = 0,maxIndex = slideLi.length -1;
           var posOld = {
                 x: parseInt(slideLi.css("left")),
@@ -137,14 +138,27 @@ define(["angular", "jquery","angular-route"],function(angular,$){
           slideLi.bind("click",function(e){
             var oldIndex = index;
             index = $(this).index();
+            if(slideLi.eq(index).is(":animated")){
+            	return false;
+            }
             if(oldIndex < index){
               slide("left");
             }else{
               slide("right");
             }
+            aaaa(oldIndex);
           });
           slide("init");
-          
+          function aaaa(oldIndex){
+	        var oldLi = slideIntr.eq(oldIndex),
+	            newLi = slideIntr.eq(index);
+	        
+	        oldLi.animate({"top": "-20px","opacity": 0},400,function(){
+	        	oldLi.css({"top": "20px"});
+	        });
+	        newLi.animate({"top": "0px","opacity": 1},400);
+	        
+	      }
           function slide(dir){
             var now = slideLi.eq(index),
                 prev = index===0? slideLi.eq(maxIndex) : now.prev(),
@@ -160,6 +174,8 @@ define(["angular", "jquery","angular-route"],function(angular,$){
             prev.css({"zIndex": 10}).animate({"left": min.left,"top": min.top,"width": min.w, "height": min.h},400).find(".mask").show();
             next.css({"zIndex": 10}).animate({"left": min.right,"top": min.top,"width": min.w, "height": min.h},400).find(".mask").show();
           }
+          
+          
         });
         
       }
