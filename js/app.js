@@ -37,8 +37,10 @@ define(["angular", "jquery","angular-route"],function(angular,$){
       {"label": "英语", "content": "CET4 (551)"},
       {"label": "工作年限", "content": "2年"},
       {"class": "strong", "label": "求职意向", "content": "Web前端工程师"},
+      {"class": "strong", "label": "理想行业", "content": "互联网"},
       {"class": "col2", "label": "GitHub", "content": "https://github.com/ziloLiang"},
-      {"class": "col2", "label": "兴趣爱好", "content": "足球　羽毛球　dota2　炉石传说　动漫"}
+      {"class": "col2", "label": "兴趣爱好", "content": "足球　羽毛球　dota2　炉石传说　动漫"},
+      {"class": "col4", "label": "自我介绍", "content": "Web前端工程师"}
     ]
   
     //我的技术图片列表
@@ -68,19 +70,23 @@ define(["angular", "jquery","angular-route"],function(angular,$){
     	index: 0,
     	projectList: [
     	 {"title": "Gurucv人物志","UrlName": "www.gurucv.com","UrlLink": "http://www.gurucv.com",
-    	 "intr": "Gurucv人物志是一个全新的职业社交网站，不仅具备社交网站的所有职能，"+
-    	  "而他最为新颖的就是云详历。通过将各方面人才的详历挂在到云端",
-    	  "myDuty": "前端工程师",
+    	 "date": "2013-11~2015-7",
+    	 "intr": "Gurucv人物志是一个全新的职业社交SNS网站，Gurucv人物志革命式的将职业社交、云详历和传统招聘流程融为一体，"+
+    	  "他就像是中国的linkedIn，不同的是它更具有中国特色，并能更好地把握中国市场。配套有云详历cv.gurucv.com",
+    	  "myDuty": "从项目开始便负责整个项目前端的搭建，页面的生成，并持续为新的需求提供通用的组件和后期的项目优化。"+
+    	  "并在项目中不断尝试新兴的技术，优化用户体验。",
     	  "imgType": "cross",
     	  "imgList": [
-    	   {"label": "首页","img": "com_1.png"},
-    	   {"label": "职业圈功能","img": "com_2.png"},
-    	   {"label": "私信功能","img": "com_3.png"}
+    	   {"label": "首页","img": "com_1.jpg"},
+    	   {"label": "职业圈功能","img": "com_2.jpg"},
+    	   {"label": "私信功能","img": "com_3.jpg"}
     	  ]
     	 },
     	 {"title": "Gurucv人物志-移动端","UrlName": "m.gurucv.com","UrlLink": "http://m.gurucv.com",
-    	  "intr": "天才相离移动端", 
-    	  "myDuty": "前端工程师",
+    	 "date": "2015-4~2015-7",
+    	  "intr": "Gurucv人物志-移动端是Gurucv人物志的手机端单页应用(SPA)，功能与web端基本相同,采用的流行AMD模块化的思想，运用了requireJs+angularJS来搭建前端架构"+
+    	  "，具有几近APP的用户体验。",
+    	  "myDuty": "从了解到SPA的需求开始，推动采用angularJS新技术，搭建新技术的运用环境。并全程包办项目的整体前端流程与优化。将新的技术和技术理念推向整个团队。",
     	  "imgType": "vertical",
     	  "imgList": [
          {"label": "个人设置","img": "m_1.png"},
@@ -108,9 +114,6 @@ define(["angular", "jquery","angular-route"],function(angular,$){
     	]
     }
     
-    $scope.ale= function(){
-      alert(111);
-    }
   }]);
   
   app.directive("slideModel",function(){

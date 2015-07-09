@@ -133,13 +133,14 @@
 		  <section class="content-model model-black project" >
 		      <div class="content-inner clearfix" >
 		        <h2 class="model-title" >
-		              <span class="large">我做过什么？</span>
+		              <span class="large">我做过什么典型项目？</span>
 		              <span class="mini">What&nbsp;&nbsp;did&nbsp;&nbsp;I&nbsp;&nbsp;do</span>
 		            </h2>
 		        <div class="project-info clearfix {{item.imgType}}" data-ng-repeat="item in project.projectList">
 		          <div class="project-box">
 		            <div class="project-title" data-ng-bind="item.title" ></div>
 		            <p class="project-p"><span class="label">项目地址:</span> <a target="_blank" data-ng-href="{{item.UrlLink}}" >{{item.UrlName}}</a></p>
+		            <p class="project-p"><span class="label">项目时间:</span> {{item.date}}</p>
 		            <p class="project-p"><span class="label">项目简介:</span> {{item.intr}}</p>
 		            <p class="project-p"><span class="label">项目职责:</span> {{item.myDuty}}</p>
 		          </div>
@@ -172,5 +173,14 @@
 			</div>
 		</section>
 		<!--我的书架---end-->
+		<!--我的插件---start-->
+		<section class="content-model my-plug-in" >
+      <div class="content-inner clearfix" >
+        <div class="plug-in-list" >
+          
+        </div>
+      </div>
+    </section>
+    <!--我的插件---end-->
 	</body>
 </html>
