@@ -4,7 +4,9 @@
 		<meta charset="utf-8" />
 		<title>I'm here, waiting for your choice</title>
 		<link rel="stylesheet" href="./css/basic.css" />
-		
+		<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"  ></script>
     <script src="js/echarts/echarts.js"></script>
     <script type="text/javascript">
@@ -162,9 +164,9 @@
 		<section class="content-model bookshelf" >
 			<div class="content-inner clearfix" >
 				<h2 class="model-title" >
-		          <span class="large">我的读书历程</span>
-		          <span class="mini">My&nbsp;&nbsp;reading&nbsp;&nbsp;course</span>
-		        </h2>
+          <span class="large">我的读书历程</span>
+          <span class="mini">My&nbsp;&nbsp;reading&nbsp;&nbsp;course</span>
+        </h2>
 				<ul class="book-list">
 					<li data-ng-repeat="book in bookshelf.bookList" >
 						<img alt="{{book.label}}" title="{{book.label}}" ng-src="{{bookshelf.imgSrc}}{{book.img}}" />
