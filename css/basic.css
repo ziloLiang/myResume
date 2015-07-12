@@ -1,70 +1,4 @@
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+* {
   margin: 0;
   padding: 0;
   border: 0;
@@ -173,6 +107,14 @@ body {
   font-size: 19px;
   margin-left: 40px;
 }
+.content-model .content-legend {
+  display: block;
+  margin: 0 5%;
+  color: #565656;
+  font-size: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5e5e5;
+}
 .model-black {
   background-color: #2a303c;
 }
@@ -190,7 +132,6 @@ body {
   max-width: 1160px;
   min-width: 996px;
   margin: 0 auto;
-  padding: 0 20px;
   *zoom: 1;
 }
 .content-inner:before,
@@ -200,6 +141,12 @@ body {
 }
 .content-inner:after {
   clear: both;
+}
+.top-bar .content-inner {
+  background-color: #cb3837;
+}
+.model-black .content-inner {
+  background-color: #2a303c;
 }
 .top-bar {
   position: fixed;
@@ -271,7 +218,8 @@ body {
 }
 .basic-info #radar {
   float: left;
-  width: 25%;
+  width: 23%;
+  padding-right: 2%;
   height: 140px;
 }
 .basic-info .info-header {
@@ -282,7 +230,7 @@ body {
   width: 200px;
 }
 .basic-info .basic-list {
-  padding-left: 200px;
+  padding-left: 220px;
 }
 .basic-info .basic-box {
   float: left;
@@ -446,9 +394,142 @@ body {
   top: 0;
 }
 .bookshelf .book-list li {
+  position: relative;
   float: left;
-  width: 14%;
+  width: 12.5%;
+  text-align: right;
+  height: 200px;
+  cursor: pointer;
+  z-index: 2;
 }
 .bookshelf .book-list li img {
-  width: 200px;
+  position: relative;
+  height: 160px;
+  margin-top: 20px;
+  border: 1px solid #e5e5e5;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+.bookshelf .book-list li.current {
+  z-index: 3;
+}
+.bookshelf .book-list li.current img {
+  margin-top: -10px;
+}
+.bookshelf .book-detail-list {
+  padding-top: 40px;
+}
+.bookshelf .book-detail-list li {
+  display: none;
+}
+.bookshelf .book-detail-list .detail-left,
+.bookshelf .book-detail-list .detail-right {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.bookshelf .book-detail-list .detail-left {
+  float: left;
+  width: 30%;
+  margin-left: -100px;
+}
+.bookshelf .book-detail-list .detail-left img {
+  height: 350px;
+  border: 1px solid #e5e5e5;
+}
+.bookshelf .book-detail-list .detail-left.slide-in {
+  margin-left: 0;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.bookshelf .book-detail-list .detail-right {
+  float: right;
+  width: 70%;
+  font-size: 16px;
+  margin-right: -100px;
+}
+.bookshelf .book-detail-list .detail-right.slide-in {
+  margin-right: 0;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.bookshelf .book-detail-list .detail-right .detail-recommend {
+  margin-bottom: 20px;
+}
+.bookshelf .book-detail-list .detail-right .detail-recommend-label {
+  float: left;
+  margin-right: 10px;
+  height: 20px;
+  line-height: 20px;
+}
+.bookshelf .book-detail-list .detail-right .detail-recommend-wapper {
+  float: left;
+  height: 20px;
+  width: 300px;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+.bookshelf .book-detail-list .detail-right .recommend-inner {
+  height: 30px;
+  background-color: #f0ad4e;
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  -webkit-background-size: 40px 40px;
+  background-size: 40px 40px;
+}
+.bookshelf .book-detail-list .detail-right .detail-name {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.bookshelf .book-detail-list .detail-right .detail-intr {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.bookshelf .book-detail-list li.current {
+  display: block;
+}
+.my-plug-in {
+  background-color: #f2f2f2;
+}
+.my-plug-in .plug-in-list {
+  float: left;
+  width: 25%;
+  color: #565656;
+}
+.my-plug-in .plug-in-list .plug-in-name {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  padding-left: 25px;
+  background: url(../img/plug-icon.png) no-repeat 0 6px;
+}
+.my-plug-in .plug-in-list .plug-in-p {
+  font-size: 16 px;
+  margin-bottom: 10px;
+  word-break: break-word;
+  padding-right: 30px;
+  color: #888;
+}
+.my-plug-in .plug-in-list .plug-in-p a:hover {
+  color: #cb3837;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.my-plug-in .plug-in-list .plug-in-intr {
+  line-height: 1.6;
 }

@@ -1,73 +1,7 @@
 @import "utils.less";
 @import "options.less";
 
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+*{
   margin: 0;
   padding: 0;
   border: 0;
@@ -186,6 +120,14 @@ body {
             margin-left: 40px;
         }
     }
+    .content-legend{
+        display: block;
+        margin: 0 5%;
+        color: #565656;
+        font-size: 18px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e5e5e5;
+    }
 }
 
 .model-black{
@@ -208,7 +150,6 @@ body {
     max-width: @innerWidth;
     min-width: 996px;
     margin: 0 auto;
-    padding: 0 20px;
     *zoom: 1;
     &:before,&:after{
         content: " ";
@@ -216,6 +157,12 @@ body {
     }
     &:after{
         clear: both;
+    }
+    .top-bar & {
+        background-color: @color2;
+    }
+    .model-black & {
+        background-color: @color1;
     }
 }
 
@@ -283,7 +230,8 @@ body {
     }
     #radar{
         float: left;
-        width: 25%;
+        width: 23%;
+        padding-right: 2%;
         height: 140px;
     }
     .info-header{
@@ -294,7 +242,7 @@ body {
         width: 200px;
     }
     .basic-list{
-        padding-left: 200px;
+        padding-left: 220px;
     }
     .basic-box{
         float: left;
@@ -482,15 +430,140 @@ body {
     }
 }
 
-
+//我的书架-----------start
 .bookshelf{
     .book-list{
         li{
+            position: relative;
             float: left;
-            width: 14%;
+            width: 12.5%;
+            text-align: right;
+            height: 200px;
+            cursor: pointer;
+            z-index: 2;
             img {
-                width: 200px;
+                position: relative;
+                height: 160px;
+                margin-top: 20px;
+                border: 1px solid #e5e5e5;
+                .transition(all 0.3s ease);
+                .box-shadow(-3px 3px 3px rgba(0,0,0,0.5));
             }
+            &.current{
+                z-index: 3;
+                img{
+                    margin-top: -10px;
+                    @media all and (max-width: 1200px){
+                       
+                    }
+                }
+            }
+        }
+    }
+    .book-detail-list{
+        padding-top: 40px;
+        li{
+            display: none;
+        }
+        .detail-left, .detail-right{
+            .transition(all 0.3s ease);
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        .detail-left{
+            float: left;
+            width: 30%;
+            margin-left: -100px;
+            img{
+                height: 350px;
+                border: 1px solid #e5e5e5;
+            }
+            &.slide-in{
+                margin-left: 0;
+                opacity: 1;
+                filter: alpha(opacity=100);
+            }
+        }
+        .detail-right{
+            float: right;
+            width: 70%;
+            font-size: 16px;
+            margin-right: -100px;
+            @recommendColor1: #f0ad4e;
+            @recommendColor2: rgba(0, 128, 255, 0.9);
+            &.slide-in{
+                margin-right: 0;
+                opacity: 1;
+                filter: alpha(opacity=100);
+            }
+            .detail-recommend{
+                margin-bottom: 20px;
+            }
+            .detail-recommend-label{
+                float: left;
+                margin-right: 10px;
+                height: 20px;
+                line-height: 20px;
+            }
+            .detail-recommend-wapper{
+                float: left;
+                height: 20px;
+                width: 300px;
+                overflow: hidden;
+                background-color: #f2f2f2;
+                .border-radius();
+            }
+            .recommend-inner{
+                height: 30px;
+                background-color: @recommendColor1;
+                background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+                background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+                background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+                -webkit-background-size: 40px 40px;
+                background-size: 40px 40px;
+            }
+            .detail-name{
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .detail-intr{
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+        }
+        li.current{
+            display: block;
+        }
+    }
+}
+//我的书架-----------end
+
+.my-plug-in{
+    background-color: #f2f2f2;
+    .plug-in-list{
+        float: left;
+        width: 25%;
+        color: #565656;
+        .plug-in-name{
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 800;
+            padding-left: 25px;
+            background: url(../img/plug-icon.png) no-repeat 0 6px;
+        }
+        .plug-in-p{
+            font-size: 16 px;
+            margin-bottom: 10px;
+            word-break: break-word;
+            padding-right: 30px;
+            color: #888;
+            a:hover{
+                color: @color2;
+                .transition(color 0.3s);
+            }
+        }
+        .plug-in-intr{
+            line-height: 1.6;
         }
     }
 }
