@@ -1,8 +1,8 @@
 (function(){
 	
-  var app = angular.module("myApp",[]);
+  var app = angular.module("myApp",["ngSanitize"]);
   
-  app.controller("IndexController",["$scope",function($scope){
+  app.controller("IndexController",["$scope", "$sce", function($scope, $sce){
     //导航条
     $scope.model = {        
       index: 0,
@@ -25,7 +25,6 @@
     //基本信息
     $scope.basic = [
       {"label": "姓名", "content": "梁冬"},
-      {"label": "英文名", "content": "Uniq"},
       {"label": "性别", "content": "男"},
       {"label": "婚姻状况", "content": "单身狗"},
       {"label": "出生地", "content": "天津"},
@@ -39,9 +38,15 @@
       {"class": "strong", "label": "求职意向", "content": "Web前端工程师"},
       {"class": "strong", "label": "理想行业", "content": "互联网"},
       {"class": "col2", "label": "GitHub", "content": "https://github.com/ziloLiang"},
-      {"class": "col2", "label": "兴趣爱好", "content": "足球　羽毛球　dota2　炉石传说　动漫"},
-      {"class": "col4", "label": "自我介绍", "content": "Web前端工程师"}
+      {"class": "col2", "label": "兴趣爱好", "content": "足球　羽毛球　dota2　炉石传说　动漫"}
     ]
+    
+    $scope.mySpeak ={"class": "col4", "label": "自我介绍", "content": "<p>在我看来web前端不同于传统程序猿，他更需要一个理性和感性相结合的人，而兼具审美强迫症和不俗逻辑能力的我与眼中的web前端是如此的切合。</p>"+
+       "<p>而我还是一个在工作中有自己想法的人，对于项目的设计往往会提出我的看法，不论最终落实于实践与否，我仍然会全力以赴的去完成它。没有自己想法的人往往只能追逐流行</p>"+
+       "<p>我并不将web前端看成是一项谋生的手段，每每做出华丽的效果，nice的用户体验，良好的插件都令我倍感兴奋，而这种成就感也不断推动着我在web前端的道路上越走越远。</p>"+
+       "<p>回想毕业时没有前端经验，完全通过自学的我，在找工作中四处碰壁，但我没有放弃，抓住机会坚持我的梦想。将近两年的时间，我不断打磨基础，并像海绵一样不断地汲取新的知识，将它们运用于实践。</p>"+
+       "<p>从当年为了一个兼容问题绞尽脑汁的小菜鸟，到现在能独立承担前端工程的老菜鸟。飞速的成长伴随着眼界的开阔，我希望能迈向更高的平台，寻求更高的挑战。</p><p>现在我准备好了，就在这里。等待你的决定？</p>"
+      }
   
     //我的技术图片列表
     $scope.myTec = {
@@ -50,6 +55,7 @@
         {"question": "web语义化？浏览器兼容？", "answer": "这是基础"},
         {"question": "问题纠错，调试BUG？", "answer": "这是我的强项"},
         {"question": "响应式布局，移动端建站？", "answer": "不用bootstrap，原生我就能办到"},
+        {"question": "懂不懂后端，能不能和后端同学很好配合？", "answer": "不用担心，软件工程出身的我还参加过j2ee的培训呢。虽然最终选择了前端，但后端思想已融入己身。"},
         {"question": "我熟练掌握什么技术?", "answer": "↓"} 
       ],
       list: [
@@ -120,11 +126,37 @@
     		 "recommend": {"width": '50%'},
     		 "review": "本书重要讲的设计理念，和在设计方面的用户体验，CSS方面比较浅显。个人认为对于设计者和CSSER可我是食之无味，弃之可惜。"
     		},
-    		{"label": "HTML5程序设计", "img": "book_html5.jpg"},
-    		{"label": "响应式WEB设计", "img": "book_html5response.jpg"},
-    		{"label": "Dont't make me think", "img": "dont-think.jpg"},
-    		{"label": "用angularjs开发下一代web应用", "img": "book_angualrAnimal.jpg"},
-    		{"label": "angularjs权威指南", "img": "book_ngbook.jpg"}
+    		{"label": "HTML5程序设计", "img": "book_html5.jpg",
+    		  "intr": "本书首先介绍了HTML5 的历史背景、新的语义标签及与以往HTML 版本相比的根本变化，同时揭示了HTML5 背后的设计原理。本书在上一版的基础上新增了SVG 和拖放API相关内容，并对部分内容进行了更新。从第2 章起，分别围绕构建令人神往的富Web 应用，逐一讨论了HTML5 的Canvas、Geolocation、Communication、WebSocket、Forms、WebWorkers、Storage 等API 的使用，辅以直观明了的客户端和服务器端示例代码，让开发人员能够迅速理解和掌握新一代Web 标准所涵盖的核心技术。本书最后探索了离线Web 应用并展望了HTML5 未来的发展前景。本书面向有一定经验的Web 应用开发人员，对HTML5 及未来Web 应用技术发展有浓厚兴趣的读者也可以学习参考。",
+    		  "recommend": {"width": '80%'},
+    		  "review": "本书详细的讲解HTML5的新特性，对于HTML5初学者和想要了解HTML5的程序员来书是一本很好的书籍，内容不深但很全面。推荐"
+    		},
+    		{"label": "响应式WEB设计", "img": "book_html5response.jpg",
+    		  "intr": "移动互联网时代到来了。《响应式Web设计：HTML5和CSS3实战》将当前Web设计中热门的响应式设计技术与HTML5和CSS3结合起来，为读者全面深入地讲解了针对各种屏幕大小设计和开发现代网站的各种技术。不仅讨论了媒体查询、流式布局、相对字体、响应式媒体，更将HTML5和CSS3的相关知识点一并讲解，是学习最新Web设计技术不可多得的佳作。",
+    		  "recommend": {"width": '60%'},
+    		  "review": "本书主要讲解了如何利用媒体查询和流布局创建响应式的网站，顺带提到了一些新的HTNL5标签和特性。对于想了解相应书布局的同学来说书中内容大多能在网上找到，也并无高深。当然此书不厚，买一本学习也不无不可。"
+    		},
+    		{"label": "Dont't make me think", "img": "dont-think.jpg",
+    		 "intr": "可用性设计是Web设计中最重要也是难度最大的一项任务。本书作者根据多年从业的经验，剖析用户的心理，在用户使用模式、为扫描进行设计、导航设计、主页布局、可用性测试等方面提出了许多独特的观点，并给出了大量简单、易行的可用性设计的建议。本书短小精练，语言轻松诙谐，书中穿插大量色彩丰富的屏幕截图、趣味丛生的卡通插图以及包含大量信息的图表，使枯燥的设计原理变得平易近人。本书适合从事Web设计和Web开发的技术人员阅读，特别适合为如何留住访问者苦恼的网站/网页设计人员阅读。",
+    		 "recommend": {"width": '90%'},
+    		 "review": "在我看来，该书不论对于前端同学，UI，还是产品同学都是一本不可多得的好书。本书通过可用性将网页精心层层解刨，通过生动的事例为我们打开了一扇可用性的大门。强推"
+    		},
+//  		{"label": "用angularjs开发下一代web应用", "img": "book_angualrAnimal.jpg",
+//  		 "intr": "我们都希望开发更小型、更轻量的Web应用，让创建应用更加容易，并且当项目变大时仍然易于测试、扩展和维护。这本手册将为你介绍AngularJS，它是一个开源的JavaScript框架，它使用MVC架构、数据绑定、客户端模板以及依赖注入等技术，从而为构建Web应用创建急需的结构。本书的作者是两位在Google负责AngularJS框架的工程师，他们将引领读者概览整个框架的核心特性，并构建一款可运行的AngularJS应用，内容涵盖布局、测试、编译及调试整个过程。通过这个过程，你将会学到AngularJS是怎样降低Web应用复杂性的。",
+//  		 "recommend": {"width": "40%"},
+//  		 "review": "本书对于angualrJs的初学者就是一个坑，跳跃性太强，不讲基础，主要讲构建项目。但对于有一定基础的angularJs开发者来说又过于鸡肋。不推荐"
+//  		},
+        {
+         "label": "高性能javascript", "img": "high-js.jpg",
+         "intr": "如果你使用JavaScript构建交互丰富的Web应用，那么JavaScript代码可能是造成你的Web应用速度变慢的主要原因。《高性能JavaScript》揭示的技术和策略能帮助你在开发过程中消除性能瓶颈。你将会了解如何提升各方面的性能，包括代码的加载、运行、DOM交互、页面生存周期等。雅虎的前端工程师Nicholas C. Zakas和其他五位JavaScript专家介绍了页面代码加载的最佳方法和编程技巧，来帮助你编写更为高效和快速的代码。你还会了解到构建和部署文件到生产环境的最佳实践，以及有助于定位线上问题的工具。",
+         "recommend": {"width": '100%'},
+         "review": "本书是Nicholas C. Zakas的又一js力作，从js根源一直到项目构建细致入微的讲解了如何提高前端性能，美中不足的是由于版本比较老构建方面不如现在的grunt等工具。但瑕不掩瑜，力推。ps：Nicholas C. Zakas不写书白瞎了你这个人了。"
+        },
+    		{"label": "angularjs权威教程", "img": "book_ngbook.jpg",
+    		 "intr": "《图灵程序设计丛书：AngularJS权威教程》是学习AngularJS的公认经典，内容全面，讲解通俗，适合各层次的学习者。作者拥有丰富的AngularJS开发和教学经验，也是一位全栈工程师。全书35章，由浅入深地讲解了AngularJS的基本概念和基本功能，包括模块、作用域、控制器、表达式、指令、路由、依赖注入等，重要的是书中对每一个概念的讲解都配合了恰如其分的示例和代码，让读者通过动手实践，切身体会到这些概念的含义和价值。《AngularJS权威教程》后半部分深入到AngularJS应用开发，系统地讨论了服务器通信、事件、架构、动画、本地化、安全、缓存、移动应用等主题。",
+    		 "recommend": {"width": "80%"},
+    		 "review": "本书对于angularJs初学者来书是一本不可多得的好书，前半部分从angular基础入手详细的讲解了angularJs中的指令，服务，依赖等基础元素。后半部分则介绍了angularJs的一些高级应用。美中不足的是一些官方api中的服务没有具体提及，例如$compile,$templateRequest。这些对于编写插件非常重要的服务。推荐"
+    		}
     	]
     }
     
@@ -293,9 +325,12 @@
   		}
   	}
   	
+  }]).filter('trustHtml', ['$sce', function ($sce) {
+      return function (input) {
+          return $sce.trustAsHtml(input);
+      };
   }]);
 
-  angular.bootstrap(document,["myApp"]);
   
   console.log("/**");
   console.log("*如果需要源码的话，请发email给我:-D");
