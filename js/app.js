@@ -331,10 +331,5 @@
       };
   }]);
 
-  
-  console.log("/**");
-  console.log("*如果需要源码的话，请发email给我:-D");
-  console.log("*/");
-
 	
 })();
