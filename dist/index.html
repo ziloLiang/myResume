@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html ng-app="myApp" >
+
+	<head>
+		<meta charset="utf-8" />
+		<title>I'm here, waiting for your choice</title>
+		<link rel="stylesheet" href="./css/basic.css" />
+		<!--[if lt IE 9]>
+	      <script type="text/javascript" src="js/lib/Html5.js" ></script>
+	    <![endif]-->
+	</head>
+	<body data-ng-controller="IndexController">
+		<header class="top-bar">
+			<div class="content-inner">
+				<div class="address">
+					<figure class="address-legend">联系方式</figure>
+					<div class="address-box" data-ng-repeat=" item in address">
+						<span class="address-label" data-ng-bind="item.name"></span>:
+						<span class="address-content" data-ng-bind="item.content"></span>
+					</div>
+				</div>
+				<nav class="top-nav"  >
+					<div class="nav-li" data-ng-repeat="item in model.modelList" data-ng-bind="item.label" nav-init ng-class="{ current: $index=== model.index}">
+					</div>
+				</nav>
+			</div>
+		</header>
+		<!--基本信息---start-->
+		<section class="content-model model-black basic-info">
+			<div class="content-inner clearfix">
+				<img src="img/header-exmple.png" class="info-header" />
+				<div class="basic-list clearfix">
+
+					<div id="radar"></div>
+					<div class="basic-box {{item.class}}" data-ng-repeat="item in basic">
+						<span class="basic-label" data-ng-bind="item.label"></span>:
+						<span class="basic-content" data-ng-bind="item.content"></span>
+					</div>
+					<div class="speak-box">
+            <span class="basic-label" data-ng-bind="mySpeak.label"></span>:
+            <span class="basic-content" data-ng-bind-html="mySpeak.content|trustHtml"></span>
+          </div>
+					<div class="basic-radar-intr clearfix">
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--基本信息---end-->
+		<!--我会什么---start-->
+		<section class="content-model what-ICan">
+			<div class="content-inner clearfix">
+				<h2 class="model-title">
+
+	          <span class="large">我会什么?</span>
+
+	          <span class="mini">What&nbsp;&nbsp;I&nbsp;&nbsp;would</span>
+
+	        </h2>
+				<ul class="my-tec-text">
+					<li data-ng-repeat="item in myTec.textList">
+						<span class="text-question" data-ng-bind="item.question"></span>
+						<span class="text-answer" data-ng-bind="item.answer"></span>
+					</li>
+				</ul>
+				<ul class="my-tec-list clearfix">
+					<li data-ng-repeat="item in myTec.list">
+						<img alt="{{item.label}}" title="{{item.label}}" data-ng-src="{{myTec.imgSrc}}{{item.img}}" />
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!--我会什么---end-->
+		<!--项目经验---start-->
+		<section class="content-model model-black project">
+			<div class="content-inner clearfix">
+				<h2 class="model-title">
+
+		              <span class="large">我做过什么典型项目？</span>
+
+		              <span class="mini">What&nbsp;&nbsp;did&nbsp;&nbsp;I&nbsp;&nbsp;do</span>
+
+		            </h2>
+				<div class="project-info clearfix {{item.imgType}}" data-ng-repeat="item in project.projectList">
+					<div class="project-box">
+						<div class="project-title" data-ng-bind="item.title"></div>
+						<p class="project-p"><span class="label">项目地址:</span> <a target="_blank" data-ng-href="{{item.UrlLink}}">{{item.UrlName}}</a>
+						</p>
+						<p class="project-p"><span class="label">项目时间:</span> {{item.date}}</p>
+						<p class="project-p"><span class="label">项目简介:</span> {{item.intr}}</p>
+						<p class="project-p"><span class="label">项目职责:</span> {{item.myDuty}}</p>
+					</div>
+					<div class="project-slide">
+						<div class="slide-box" slide-model>
+							<ul class="slide-wapper">
+								<li data-ng-repeat="image in item.imgList">
+									<img data-ng-src="{{project.imgSrc}}{{image.img}}" ng-repeat-finish />
+								</li>
+							</ul>
+							<ul class="slide-intr">
+								<li data-ng-repeat="image in item.imgList" data-ng-bind="image.label"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--我的书架---end-->
+		<!--我的书架---start-->
+		<section class="content-model bookshelf" bookshelf >
+			<div class="content-inner clearfix">
+				<h2 class="model-title">
+
+          <span class="large">我的读书历程</span>
+
+          <span class="mini">My&nbsp;&nbsp;reading&nbsp;&nbsp;course</span>
+
+        </h2>
+				<ul class="book-list clearfix">
+					<li data-ng-repeat="book in bookshelf.bookList"  ng-class="{current: bookshelf.index===$index}">
+						<img alt="{{book.label}}" title="{{book.label}}" data-ng-src="{{bookshelf.imgSrc}}{{book.img}}" />
+					</li>
+				</ul>
+				<ul class="book-detail-list" >
+					<li class="clearfix" data-ng-class="{current: bookshelf.index === $index}" data-ng-repeat="book in bookshelf.bookList" ng-repeat-finish >
+						<div class="detail-left">
+							<img alt="{{book.label}}" title="{{book.label}}" data-ng-src="{{bookshelf.imgSrc}}{{book.img}}" />
+						</div>
+						<div class="detail-right">
+							<p class="detail-name" data-ng-bind="book.label" ></p>
+							<div class="detail-recommend clearfix">
+								<span class="detail-recommend-label" >推荐度：</span>
+								<div class="detail-recommend-wapper"  >
+									<p class="recommend-inner" ng-style='book.recommend' ></p>
+								</div>
+							</div>
+							<p class="detail-intr" >图书简介：{{book.intr}}</p>
+							<p class="detail-intr" >读后感：{{book.review}}</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!--我的书架---end-->
+		<!--我的插件---start-->
+		<section class="content-model my-plug-in">
+			<div class="content-inner clearfix">
+				<h2 class="model-title">
+		          <span class="large">我的组件</span>
+		          <span class="mini">plug-in</span>
+		        </h2>
+				<ul class="plug-in-list" data-ng-repeat="plugIn in myPlugIn.plugInList" >
+					<li class="">
+						<p class="plug-in-name" data-ng-bind="plugIn.name" ></p>
+						<p class="plug-in-p" >编写时间:&nbsp;&nbsp;{{plugIn.date}}</p>
+						<p class="plug-in-p" >GitHub:&nbsp;&nbsp;<a target="_blank" data-ng-href="plugIn.url" >{{plugIn.url}}</a></p>
+						<p class="plug-in-p plug-in-intr" >简介:&nbsp;&nbsp;{{plugIn.intr}}</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!--我的插件---end-->
+		<!--[if lt IE 9]>
+			<div class="IE8Mask" >
+				<div class="mask-center">
+					<img src="dist/img/run.gif" />
+					<p>还在用IE8以下的浏览器？更现代的浏览器具有更好的体验和更快的速度，不如换成<a href="http://www.google.cn/chrome/browser/desktop/index.html">chrome</a>像我一样跑得更快？</p>
+				</div>
+			</div>
+	    <![endif]-->
+		<script type="text/javascript" src="js/lib/jquery-1.11.1.min.js" ></script>
+		<script src="js/lib/angular.js"></script>
+		<script src="js/lib/angular-sanitize.js"></script>
+		<script type="text/javascript" src="js/app.js" ></script>
+		<script src="js/echarts/echarts.js"></script>
+		<script type="text/javascript">
+			require.config({
+			        paths: {
+			          echarts: 'js/echarts'
+			        }
+			      })
+			      require(
+			        [
+			          'echarts',
+			          'echarts/chart/radar'
+			        ],
+			        function(ec) {
+			          var myChart = ec.init(document.getElementById('radar'));
+			          var option = {
+			            color: ["rgba(255,255,255,0.7)", "rgba(255,255,255,0.7)"],
+			            textStyle: {
+			              color: "#fff"
+			            },
+			            calculable: false,
+			            polar: [{
+			              indicator: [{
+			                text: '责任心',
+			                max: 100
+			              }, {
+			                text: '协作',
+			                max: 100
+			              }, {
+			                text: '成长',
+			                max: 100
+			              }, {
+			                text: '用户体验',
+			                max: 100
+			              }, {
+			                text: 'Debug',
+			                max: 100
+			              }, {
+			                text: '创新',
+			                max: 100
+			              }],
+			              radius: 50,
+			              name: {
+			                textStyle: {
+			                  color: "#fff"
+			                }
+			              }
+			            }],
+			            series: [{
+			              name: '雷达图',
+			              type: 'radar',
+			              itemStyle: {
+			                normal: {
+			                  areaStyle: {
+			                    type: 'default'
+			                  }
+			                }
+			              },
+			              data: [{
+			                value: [80,90,85,80,90,80],
+			                name: '罗纳尔多'
+			              }]
+			            }]
+			          };
+			          myChart.setOption(option);
+			        }
+			      );
+		</script>
+
+	</body>
+
+</html>

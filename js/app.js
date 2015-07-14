@@ -331,11 +331,5 @@
       };
   }]);
 
-  
-  console.log("/**");
-  console.log("*https://github.com/ziloLiang/myResume/");
-  console.log("*Ipad air2上表现良好，放弃纸质简历吧");
-  console.log("*/");
 
-	
 })();
