@@ -333,7 +333,8 @@
 
   
   console.log("/**");
-  console.log("*如果需要源码的话，请发email给我:-D");
+  console.log("*https://github.com/ziloLiang/myResume/");
+  console.log("*Ipad air2上表现良好，放弃纸质简历吧");
   console.log("*/");
 
 	
