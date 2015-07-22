@@ -548,3 +548,28 @@ body {
 .my-plug-in .plug-in-list .plug-in-intr {
   line-height: 1.6;
 }
+.IE8Mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 10000;
+}
+.IE8Mask .mask-center {
+  position: absolute;
+  width: 400px;
+  line-height: 26px;
+  margin-left: -200px;
+  margin-top: -80px;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+}
+.IE8Mask .mask-center a {
+  color: #cb3837;
+}
+.IE8Mask .mask-center a:hover {
+  text-decoration: underline;
+}
