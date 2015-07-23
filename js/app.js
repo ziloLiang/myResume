@@ -18,8 +18,8 @@
     //联系方式
     $scope.address = [
      {"name": "Email", "content": "liangdong891228@126.com"},
-     {"name": "Mobile", "content": "13821490223"},
-     {"name": "QQ", "content": "461320504"}
+     {"name": "Mobile", "content": "138****0223"},
+     {"name": "QQ", "content": "461***504"} 
     ]
     
     //基本信息
@@ -331,5 +331,7 @@
       };
   }]);
 
+  console.log("/*源码地址=====>https://github.com/ziloLiang/myResume/   *****/");
+  
 
 })();
